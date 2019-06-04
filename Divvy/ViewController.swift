@@ -15,6 +15,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     var currentLocation = CLLocationManager()
     var milesAway: Double!
     var selectedAnnotation = MKPointAnnotation()
+    var bikeStations : [BikeStation] = []
+    var milesApart: [Double] = []
 
     @IBOutlet weak var mapView: MKMapView!
     
@@ -25,6 +27,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         mapView.delegate = self
         currentLocation.delegate = self
         query()
+        
+    }
+    
+    @IBAction func segmentedController(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+           return
+        case 1:
+            performSegue(withIdentifier: "listSegue", sender: nil)
+        default:
+            return
+        }
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -41,6 +55,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             let availableBikes = result["availableBikes"].intValue
             let lat = result["latitude"].doubleValue
             let long = result["longitude"].doubleValue
+            let bikeStation = BikeStation(name: name, availableBikes: availableBikes, lat: lat, long: long)
+            bikeStations.append(bikeStation)
+            calculateMiles(location: currentLocation.location!)
             let location = CLLocationCoordinate2D(latitude: lat, longitude: long)
             let annotation = MKPointAnnotation()
             annotation.coordinate = location
@@ -72,6 +89,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 self.loadError()
             }
             
+        }
+    }
+    
+    func calculateMiles(location: CLLocation){
+        for bikeStation in bikeStations {
+            let coordinate = CLLocation(latitude: bikeStation.lat, longitude: bikeStation.long)
+            let distance = coordinate.distance(from: location)
+            milesApart.append(distance * 0.000621371)
         }
     }
     
@@ -111,6 +136,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         selectedAnnotation = view.annotation as! MKPointAnnotation
         getDirections(location: selectedAnnotation.coordinate)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let dvc = segue.destination as! ListViewController
+        dvc.bikeStations = bikeStations
+        dvc.milesApart = milesApart
     }
     
 }

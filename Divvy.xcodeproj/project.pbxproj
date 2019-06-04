@@ -13,6 +13,8 @@
 		D565E75C22A6EA7000168795 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D565E75B22A6EA7000168795 /* Assets.xcassets */; };
 		D565E75F22A6EA7000168795 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D565E75D22A6EA7000168795 /* LaunchScreen.storyboard */; };
 		D565E76722A6ECD500168795 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D565E76622A6ECD500168795 /* SwiftyJSON.swift */; };
+		D565E76922A6FC7C00168795 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D565E76822A6FC7C00168795 /* ListViewController.swift */; };
+		D565E76B22A7012C00168795 /* BikeStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D565E76A22A7012C00168795 /* BikeStation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		D565E75E22A6EA7000168795 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D565E76022A6EA7000168795 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D565E76622A6ECD500168795 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		D565E76822A6FC7C00168795 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		D565E76A22A7012C00168795 /* BikeStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeStation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +62,9 @@
 			children = (
 				D565E75422A6EA6C00168795 /* AppDelegate.swift */,
 				D565E75622A6EA6C00168795 /* ViewController.swift */,
+				D565E76A22A7012C00168795 /* BikeStation.swift */,
 				D565E75822A6EA6C00168795 /* Main.storyboard */,
+				D565E76822A6FC7C00168795 /* ListViewController.swift */,
 				D565E75B22A6EA7000168795 /* Assets.xcassets */,
 				D565E75D22A6EA7000168795 /* LaunchScreen.storyboard */,
 				D565E76022A6EA7000168795 /* Info.plist */,
@@ -140,6 +146,8 @@
 			files = (
 				D565E76722A6ECD500168795 /* SwiftyJSON.swift in Sources */,
 				D565E75722A6EA6C00168795 /* ViewController.swift in Sources */,
+				D565E76B22A7012C00168795 /* BikeStation.swift in Sources */,
+				D565E76922A6FC7C00168795 /* ListViewController.swift in Sources */,
 				D565E75522A6EA6C00168795 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

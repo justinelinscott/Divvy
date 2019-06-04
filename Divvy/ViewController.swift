@@ -13,6 +13,8 @@ import MapKit
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     var currentLocation = CLLocationManager()
+    var milesAway: Double!
+    var selectedAnnotation = MKPointAnnotation()
 
     @IBOutlet weak var mapView: MKMapView!
     
@@ -71,6 +73,44 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             }
             
         }
+    }
+    
+    func getDirections(location: CLLocationCoordinate2D) {
+        let request = MKDirections.Request()
+        request.source = MKMapItem.forCurrentLocation()
+        let placemark = MKPlacemark(coordinate: location)
+        let mapItem = MKMapItem(placemark: placemark)
+        request.destination = mapItem
+        request.transportType = .automobile
+        let directions = MKDirections(request: request)
+        
+        directions.calculate { (response, error) in
+            guard let response = response else {return}
+            for route in response.routes {
+                self.milesAway = route.distance * 0.000621371
+                self.selectedAnnotation.subtitle = String.init(format: "\(self.selectedAnnotation.subtitle!) \n%.2f miles away", self.milesAway!)
+        
+                print(route.distance)
+                self.mapView.addOverlay(route.polyline)
+                
+            }
+        }
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKPolylineRenderer(polyline: overlay as! MKPolyline)
+        renderer.strokeColor = .blue
+        renderer.alpha = 0.5
+        return renderer
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+       
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        selectedAnnotation = view.annotation as! MKPointAnnotation
+        getDirections(location: selectedAnnotation.coordinate)
     }
     
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7ACC53C222A710A700926DA2 /* SelectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACC53C122A710A700926DA2 /* SelectedViewController.swift */; };
 		D565E75522A6EA6C00168795 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D565E75422A6EA6C00168795 /* AppDelegate.swift */; };
 		D565E75722A6EA6C00168795 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D565E75622A6EA6C00168795 /* ViewController.swift */; };
 		D565E75A22A6EA6C00168795 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D565E75822A6EA6C00168795 /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7ACC53C122A710A700926DA2 /* SelectedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedViewController.swift; sourceTree = "<group>"; };
 		D565E75122A6EA6C00168795 /* Divvy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Divvy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D565E75422A6EA6C00168795 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D565E75622A6EA6C00168795 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -62,9 +64,10 @@
 			children = (
 				D565E75422A6EA6C00168795 /* AppDelegate.swift */,
 				D565E75622A6EA6C00168795 /* ViewController.swift */,
+				D565E76822A6FC7C00168795 /* ListViewController.swift */,
 				D565E76A22A7012C00168795 /* BikeStation.swift */,
 				D565E75822A6EA6C00168795 /* Main.storyboard */,
-				D565E76822A6FC7C00168795 /* ListViewController.swift */,
+				7ACC53C122A710A700926DA2 /* SelectedViewController.swift */,
 				D565E75B22A6EA7000168795 /* Assets.xcassets */,
 				D565E75D22A6EA7000168795 /* LaunchScreen.storyboard */,
 				D565E76022A6EA7000168795 /* Info.plist */,
@@ -145,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D565E76722A6ECD500168795 /* SwiftyJSON.swift in Sources */,
+				7ACC53C222A710A700926DA2 /* SelectedViewController.swift in Sources */,
 				D565E75722A6EA6C00168795 /* ViewController.swift in Sources */,
 				D565E76B22A7012C00168795 /* BikeStation.swift in Sources */,
 				D565E76922A6FC7C00168795 /* ListViewController.swift in Sources */,

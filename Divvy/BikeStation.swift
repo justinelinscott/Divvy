@@ -13,12 +13,16 @@ class BikeStation {
     var availableBikes: Int
     var lat : Double
     var long : Double
+    var miles: Double?
     
     
-    init(name: String, availableBikes: Int, lat: Double, long: Double) {
+    init(name: String, availableBikes: Int, lat: Double, long: Double, miles: Double?) {
         self.name = name
         self.availableBikes = availableBikes
         self.lat = lat
         self.long = long
+        self.miles = miles
     }
+    
+  
 }

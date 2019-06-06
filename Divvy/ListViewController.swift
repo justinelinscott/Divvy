@@ -11,16 +11,17 @@ import UIKit
 
 class ListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    
-    
     var bikeStations: [BikeStation] = []
-    var milesApart: [Double] = []
-
+    var selected : BikeStation!
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      tableView.reloadData()
+        tableView.delegate = self
+        tableView.reloadData()
+        
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -28,13 +29,29 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let sorted = bikeStations.sorted(by: { $0.miles! < $1.miles! })
+//        images.sorted({ $0.fileID > $1.fileID })
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellID") as! UITableViewCell
-        let bikeStation = bikeStations[indexPath.row]
-        let miles = milesApart[indexPath.row]
+        let bikeStation = sorted[indexPath.row]
         cell.textLabel!.text = bikeStation.name
-        cell.detailTextLabel?.text = String.init(format: "Bikes Available: \(bikeStation.availableBikes)\n Miles Away: %.2f", miles)
+        cell.detailTextLabel?.text = String.init(format: "Bikes Available: \(bikeStation.availableBikes)\n Miles Away: %.2f", bikeStation.miles!)
+        
         return cell
     }
     
-//    self.selectedAnnotation.subtitle = String.init(format: "\(self.selectedAnnotation.subtitle!) \n%.2f miles away", self.milesAway!)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let sorted = bikeStations.sorted(by: { $0.miles! < $1.miles! })
+        
+        selected = sorted[indexPath.row]
+        performSegue(withIdentifier: "selectedSegue", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let svc = segue.destination as! SelectedViewController
+        print(selected)
+        svc.selected = selected
+    }
+    
+
 }
